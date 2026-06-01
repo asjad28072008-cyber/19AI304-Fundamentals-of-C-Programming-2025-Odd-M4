@@ -206,7 +206,36 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 11: 
  Stop
 # Program:
+```
+#include <stdio.h>
+float celtof();
+float ftocel();
+int main() {
+    float fahrenheit = celtof();
+    printf("Temperature in Fahrenheit: %.2f\n", fahrenheit);
+    float celsius = ftocel();
+    printf("Temperature in Celsius: %.2f\n", celsius);
+    return 0;
+}
+float celtof() {
+    float C, F;
+    printf("Enter the temperature in Celsius: ");
+    scanf("%f", &C);
+    F = (C * 9 / 5) + 32;
+    return F;
+}
+float ftocel() {
+    float f, celsius;
+    printf("Enter the temperature in Fahrenheit: ");
+    scanf("%f", &f);
+    celsius = (f - 32) * 5 / 9;
+    return celsius;
+}
+```
 # Output:
+
+<img width="539" height="161" alt="image" src="https://github.com/user-attachments/assets/1528def3-95e8-44d0-8548-6da0fbe62a15" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -254,7 +283,56 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 7: 
   Stop
 # Program:
+```
+#include <stdio.h>
+#define R 3
+#define C 3
+void spiralPrint(int m, int n, int a[R][C]);
+int main() {
+    int a[R][C];
+    printf("Enter 9 Numbers for a 3x3 matrix:\n");
+    for(int i=0;i<3;i++){
+        for(int j=0;j<3;j++){
+            scanf("%d",&a[i][j]);
+        }
+    }
+    printf("Spiral traversal: ");
+    spiralPrint(R, C, a);
+    printf("\n");
+    return 0;
+}
+void spiralPrint(int m, int n, int a[R][C]) {
+    int k = 0;
+    int l = 0;
+    int i;   
+    while (k < m && l < n) {
+        for (i = l; i < n; i++) {
+            printf("%d ", a[k][i]);
+        }
+        k++;
+        for (i = k; i < m; i++) {
+            printf("%d ", a[i][n-1]);
+        }
+        n--; 
+        if (k < m) {
+            for (i = n - 1; i >= l; i--) {
+                printf("%d ", a[m-1][i]);
+            }
+            m--;
+        }
+        if (l < n) {
+            for (i = m - 1; i >= k; i--) {
+                printf("%d ", a[i][l]);
+            }
+            l++; 
+        }
+    }
+}
+```
 # Output:
+
+<img width="616" height="378" alt="image" src="https://github.com/user-attachments/assets/b3527d7c-0f04-4a5c-9470-3cc2b5ab48d9" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -289,7 +367,41 @@ To build a C program to convert a string as described above, using a user-define
 ### Step 6: 
  Stop
 # Program:
+```
+#include <stdio.h>
+void convertFirstCLastC(char str[]) {
+    int len = 0;
+    while (str[len] != '\0') {
+        len++;
+    }
+    if (len == 0) return; 
+    if (str[0] >= 'a' && str[0] <= 'z') {
+        str[0] -= 32; 
+    }
+    for (int i = 1; i < len - 1; i++) {
+        if (str[i] == ' ') {
+            if (str[i-1] >= 'a' && str[i-1] <= 'z') str[i-1] -= 32;
+            if (str[i+1] >= 'a' && str[i+1] <= 'z') str[i+1] -= 32;
+        }
+    }
+    if (str[len-1] >= 'a' && str[len-1] <= 'z') {
+        str[len-1] -= 32;
+    }
+}
+int main() {
+    char str[100];
+    printf("Enter a string: ");
+    scanf("%[^\n]", str); 
+    printf("Original string: %s\n",str);
+    convertFirstCLastC(str);
+    printf("Modified string: %s\n", str);
+    return 0;
+}
+```
 # Output:
+
+<img width="446" height="118" alt="image" src="https://github.com/user-attachments/assets/22930487-46ff-4b7d-adbc-c4d03e37ab80" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
